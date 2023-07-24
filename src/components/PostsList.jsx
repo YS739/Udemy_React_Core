@@ -5,17 +5,6 @@ import classes from "./PostsList.module.css";
 function PostsList() {
   const posts = useLoaderData(); // Posts.jsx의 loader함수로 받아온 data를 사용 할 수 있음
 
-  function addPostHandler(postData) {
-    fetch("http://localhost:8080/posts", {
-      method: "POST",
-      body: JSON.stringify(postData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    setPosts((existingPosts) => [postData, ...existingPosts]);
-  }
-
   return (
     <>
       {posts.length > 0 && (
