@@ -35,6 +35,8 @@ export default PostDetails;
 
 export async function loader({ params }) {
   const response = await fetch("http://localhost:8080/posts/" + params.postId);
+  //route의 path: "/:postId"와 같아야 하기 때문에 params.postId를 쓴 것.
+  // 만약 path를 "/:id"로 설정했다면 params.id 가 되어야 함.
   const resData = await response.json();
   return resData.post;
 }

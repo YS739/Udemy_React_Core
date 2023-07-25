@@ -9,6 +9,7 @@ function NewPost() {
         <p>
           <label htmlFor="body">Text</label>
           <textarea id="body" name="body" required rows={3} />
+          {/* Form 태그 사용 시, name을 설정하면 그 값이 formData에 포함됨  */}
         </p>
         <p>
           <label htmlFor="name">Your name</label>
@@ -30,7 +31,7 @@ export default NewPost;
 
 export async function action({ request }) {
   const formData = await request.formData();
-  const postData = Object.fromEntries(formData); // {body:'...', author:'...'}
+  const postData = Object.fromEntries(formData); //폼데이터 변환 => {body:'...', author:'...'}
   await fetch("http://localhost:8080/posts", {
     method: "POST",
     body: JSON.stringify(postData),
